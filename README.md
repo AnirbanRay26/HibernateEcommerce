@@ -1,10 +1,22 @@
-# Hibernate E-Commerce Management System
+# 🛒 Hibernate E-Commerce Management System
 
-## About
+<p align="center">
 
-This project is a Java-based E-Commerce Management System developed using Hibernate ORM, JPA, Maven and MySQL.
+![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=openjdk)
+![Hibernate](https://img.shields.io/badge/Hibernate-6.6-blue?style=for-the-badge&logo=hibernate)
+![MySQL](https://img.shields.io/badge/MySQL-8.4-blue?style=for-the-badge&logo=mysql)
+![Maven](https://img.shields.io/badge/Maven-3.9-red?style=for-the-badge&logo=apachemaven)
+![JUnit](https://img.shields.io/badge/JUnit-5-green?style=for-the-badge&logo=junit5)
 
-The project demonstrates object-relational mapping between:
+</p>
+
+## 📌 About the Project
+
+This project is a **Java-based E-Commerce Management System** developed using **Hibernate ORM, JPA, Maven, and MySQL**.
+
+The system demonstrates how Java objects can be mapped to relational database tables using Hibernate and JPA annotations.
+
+The project contains five main entities:
 
 - Category
 - Product
@@ -12,58 +24,54 @@ The project demonstrates object-relational mapping between:
 - Orders
 - OrderDetails
 
-## Technologies
+---
 
-- Java 17
-- Hibernate ORM
-- JPA
-- Maven
-- MySQL
-- BCrypt
-- JUnit 5
+## ✨ Features
 
-## Relationships
+| Feature | Status |
+|---|---|
+| Category Management | ✅ |
+| Product Management | ✅ |
+| User Management | ✅ |
+| BCrypt Password Hashing | ✅ |
+| Order Creation | ✅ |
+| Multiple Order Details | ✅ |
+| Order Retrieval | ✅ |
+| Product Update | ✅ |
+| Order Deletion | ✅ |
+| MySQL Persistence | ✅ |
+| JUnit Testing | ✅ |
 
-- Category 1 ----- * Product
-- Users 1 ----- * Orders
-- Orders 1 ----- * OrderDetails
-- Product 1 ----- * OrderDetails
+---
 
-## Features
+## 🏗️ Entity Relationships
 
-- Category creation
-- Product creation
-- User creation
-- BCrypt password hashing
-- Order creation
-- Multiple order details
-- Order fetching
-- Product update
-- Database persistence
-- JUnit testing
-
-## Database
-
-Database name:
-
-`hibernate_ecommerce`
-
-Configuration file:
-
-`src/main/resources/hibernate.cfg.xml`
-
-## Running the Project
-
-1. Configure MySQL.
-2. Set your local MySQL username and password in `hibernate.cfg.xml`.
-3. Run `App.java`.
-
-## Testing
-
-Run `CrudTest.java` as a JUnit Test.
-
-## Database Schema
-
-SQL schema:
-
-`database/schema.sql`
+```text
+                 ┌───────────────┐
+                 │   Category    │
+                 └───────┬───────┘
+                         │
+                       1 │
+                         │
+                         │ *
+                 ┌───────▼───────┐
+                 │    Product    │
+                 └───────┬───────┘
+                         │
+                       1 │
+                         │ *
+                ┌────────▼─────────┐
+                │   OrderDetails   │
+                └────────┬─────────┘
+                         │ *
+                         │
+                         │ 1
+                 ┌───────▼───────┐
+                 │     Orders    │
+                 └───────┬───────┘
+                         │
+                       * │
+                         │ 1
+                 ┌───────▼───────┐
+                 │     Users     │
+                 └───────────────┘

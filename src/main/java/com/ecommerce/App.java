@@ -204,10 +204,31 @@ public class App {
                             customer.getPassword()
                     )
             );
+            
+         // ====================================
+         // DELETE ORDER
+         // ====================================
+         try (Session session =
+                  HibernateUtil.getSessionFactory().openSession()) {
 
-            System.out.println(
-                    "\n===== PROJECT FINISHED ====="
-            );
+             Transaction transaction =
+                     session.beginTransaction();
+
+             Orders orderToDelete =
+                     session.find(Orders.class, order.getId());
+
+             if (orderToDelete != null) {
+                 session.remove(orderToDelete);
+             }
+
+             transaction.commit();
+         }
+
+         System.out.println("Order deleted successfully.");
+         
+         System.out.println(
+                 "\n===== PROJECT FINISHED ====="
+         );
 
         } finally {
             HibernateUtil.shutdown();
